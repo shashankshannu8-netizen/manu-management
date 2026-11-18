@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Admin - MenuManager</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<section id="login" class="login" hidden>
+  <h1>Café admin</h1>
+  <p class="empty">Sign in to update the menu.</p>
+  <form id="lf">
+    <label>Email<input id="em" type="email" autocomplete="email" required></label>
+    <label>Password<input id="pw" type="password" autocomplete="current-password" required></label>
+    <button class="btn">Sign in</button>
+    <p id="msg" role="alert"></p>
+  </form>
+  <p><a href="index.html">Back to the menu</a></p>
+</section>
+
+<div id="app" hidden>
+<header class="head"><div class="wrap nav"><a class="brand" href="index.html"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#FF8A1F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h13v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V9z"/><path d="M17 11h1.5a2.5 2.5 0 0 1 0 5H17"/><path d="M8 3v3M12 3v3"/></svg> MenuManager</a>
+  <div><span id="who"></span><a class="link" href="index.html">View menu</a><button id="out">Log out</button></div></div></header>
+<main class="wrap">
+  <div id="ostats" class="stats"></div>
+  <section class="panel">
+    <div class="ph"><h2>Live orders <span class="pill" id="ocnt">0</span></h2><div class="acts" style="margin:0"><label class="chk"><input type="checkbox" id="snd" checked> Sound alert</label><button class="btn" id="xls">Download Excel (all data)</button></div></div>
+    <div id="orders" class="orders"></div>
+  </section>
+  <div id="stats" class="stats"></div>
+
+  <section class="panel"><h2>Items per category</h2><div id="bars" class="bars"></div></section>
+
+  <section class="panel">
+    <h2 id="ft">Add a menu item</h2>
+    <form id="f" class="f">
+      <input type="hidden" id="id">
+      <label>Name<input id="n" required maxlength="80"></label>
+      <label>Category<input id="c" list="cats" placeholder="e.g. Coffee" required maxlength="40"><datalist id="cats"></datalist></label>
+      <label>Price (&#8377;)<input id="p" type="number" min="0" step="0.5" required></label>
+      <label class="wide">Description<input id="d" maxlength="160"></label>
+      <label class="chk"><input type="checkbox" id="a" checked> Available today</label>
+      <div class="acts wide"><button class="btn" id="save">Save item</button><button type="button" id="cancel" hidden>Cancel edit</button></div>
+    </form>
+  </section>
+
+  <section class="panel">
+    <div class="ph"><h2>All items</h2><button id="csv">Menu CSV</button></div>
+    <div class="filters"><input id="s" type="search" placeholder="Search items" aria-label="Search items"><select id="fc" aria-label="Filter by category"></select></div>
+    <div class="scroll"><table><thead><tr><th>Item</th><th>Category</th><th>Price</th><th>Available</th><th></th></tr></thead><tbody id="rows"></tbody></table></div>
+  </section>
+  <section class="panel" id="qrp">
+    <h2>Table QR codes</h2>
+    <p class="empty">Customers scan a code and the menu opens with their table already filled in. Paste the public address of your menu page, then print the codes and put one on each table.</p>
+    <div class="f"><label class="wide">Menu page address<input id="qurl" placeholder="https://your-site.com/index.html"></label><label>Number of tables<input id="qn" type="number" min="1" max="60" value="6"></label></div>
+    <div class="acts"><button class="btn" id="qgo">Generate QR codes</button><button id="qprint">Print</button></div>
+    <div id="qr" class="qrs"></div>
+  </section>
+</main>
+</div>
+<div id="toast" role="status"></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script src="config.js"></script>
+<script src="admin.js"></script>
+</body>
+</html>

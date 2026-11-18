@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Café Menu</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="glow" aria-hidden="true"></div>
+<header class="bar"><div class="wrap nav">
+  <a class="brand" href="index.html"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#FF8A1F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h13v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V9z"/><path d="M17 11h1.5a2.5 2.5 0 0 1 0 5H17"/><path d="M8 3v3M12 3v3"/></svg> MenuManager</a>
+  <div class="navr"><span class="tbl" id="tbl" hidden></span><button class="btn-o" id="trackBtn" hidden>Track order</button><span class="live" id="live"><i></i><span id="lt">CONNECTING</span></span><a class="btn-o" href="admin.html">Staff</a></div>
+</div></header>
+<section class="wrap hero">
+  <p class="eyebrow">ORDER FROM YOUR TABLE</p>
+  <h1>Fresh from<br>the <span>machine.</span></h1>
+  <p class="lead">Pick your items, send the order, and the kitchen starts right away. No waiting for a waiter. Prices are in rupees.</p>
+  <div class="kpis" id="kpis"></div>
+</section>
+<div class="wrap">
+  <div class="tools">
+    <div class="search"><input id="q" type="search" placeholder="Search the menu" aria-label="Search the menu"><kbd>/</kbd></div>
+    <select id="sort" aria-label="Sort items">
+      <option value="cat">Sort: Category</option><option value="lo">Price: low to high</option>
+      <option value="hi">Price: high to low</option><option value="az">Name: A to Z</option>
+    </select>
+    <label class="chk"><input type="checkbox" id="hide"> Hide sold out</label>
+  </div>
+  <div id="chips" class="chips"></div>
+  <main id="grid" class="grid"><div class="skel"></div><div class="skel"></div><div class="skel"></div></main>
+</div>
+<footer>MenuManager &middot; powered by Supabase</footer>
+<div id="cartbar" class="cartbar" hidden><button id="openCart" class="btn"><span id="cc"></span><b id="ct"></b><span>View order &rarr;</span></button></div>
+<div id="scrim" class="scrim" hidden></div>
+<aside id="drawer" class="drawer" hidden aria-label="Your order">
+  <div class="dh"><h2>Your order</h2><button id="closeCart" aria-label="Close">&times;</button></div>
+  <div id="dbody"></div>
+</aside>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script src="config.js"></script>
+<script src="menu.js"></script>
+</body>
+</html>
